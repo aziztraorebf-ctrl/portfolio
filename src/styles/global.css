@@ -1,0 +1,369 @@
+/* Google Fonts Import - MUST be first */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ============================================
+   VAULT ELEGANCE - Premium Portfolio Theme
+   Inspired by antique libraries & luxury vaults
+   ============================================ */
+
+/* ============================================
+   CSS Custom Properties - Theme Tokens
+   ============================================ */
+:root {
+  /* Light Mode - Warm Paper & Mahogany */
+  --color-bg-primary: #f5f0e8;
+  --color-bg-secondary: #ebe5d9;
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #fdfcfa;
+
+  --color-accent: #8b5a4a;
+  --color-accent-hover: #6d4639;
+  --color-accent-light: #a67c6d;
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a4a4a;
+  --color-text-muted: #7a7a7a;
+  --color-text-inverse: #ffffff;
+
+  --color-border: #d4cfc4;
+  --color-border-light: #e8e3d9;
+
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+
+  /* Gradients */
+  --gradient-hero: linear-gradient(135deg, #f5f0e8 0%, #ebe5d9 50%, #e0d9cc 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff 0%, #fdfcfa 100%);
+  --gradient-accent: linear-gradient(135deg, #8b5a4a 0%, #a67c6d 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(139, 90, 74, 0.04), 0 1px 3px rgba(139, 90, 74, 0.06);
+  --shadow-md: 0 4px 6px rgba(139, 90, 74, 0.05), 0 2px 4px rgba(139, 90, 74, 0.04);
+  --shadow-lg: 0 10px 15px rgba(139, 90, 74, 0.08), 0 4px 6px rgba(139, 90, 74, 0.04);
+  --shadow-xl: 0 20px 25px rgba(139, 90, 74, 0.10), 0 8px 10px rgba(139, 90, 74, 0.06);
+  --shadow-glow: 0 0 40px rgba(139, 90, 74, 0.15);
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Spacing & Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Dark Mode - Navy & Gold */
+[data-theme="dark"] {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-bg-card: #1e293b;
+  --color-bg-elevated: #283548;
+
+  --color-accent: #d4af37;
+  --color-accent-hover: #e6c555;
+  --color-accent-light: #f0d875;
+
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-inverse: #0f172a;
+
+  --color-border: #334155;
+  --color-border-light: #475569;
+
+  --gradient-hero: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #283548 100%);
+  --gradient-card: linear-gradient(180deg, #1e293b 0%, #283548 100%);
+  --gradient-accent: linear-gradient(135deg, #d4af37 0%, #f0d875 100%);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.35), 0 8px 10px rgba(0, 0, 0, 0.25);
+  --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.2);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--gradient-hero);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Noise texture overlay for depth */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* ============================================
+   Typography
+   ============================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* ============================================
+   Custom Tailwind Theme Extension
+   ============================================ */
+@theme {
+  /* Colors */
+  --color-vault-bg: var(--color-bg-primary);
+  --color-vault-bg-secondary: var(--color-bg-secondary);
+  --color-vault-card: var(--color-bg-card);
+  --color-vault-elevated: var(--color-bg-elevated);
+  --color-vault-accent: var(--color-accent);
+  --color-vault-accent-hover: var(--color-accent-hover);
+  --color-vault-accent-light: var(--color-accent-light);
+  --color-vault-text: var(--color-text-primary);
+  --color-vault-text-secondary: var(--color-text-secondary);
+  --color-vault-text-muted: var(--color-text-muted);
+  --color-vault-border: var(--color-border);
+  --color-vault-border-light: var(--color-border-light);
+
+  /* Font families */
+  --font-family-display: var(--font-display);
+  --font-family-body: var(--font-body);
+
+  /* Border radius */
+  --radius-vault-sm: var(--radius-sm);
+  --radius-vault-md: var(--radius-md);
+  --radius-vault-lg: var(--radius-lg);
+  --radius-vault-xl: var(--radius-xl);
+
+  /* Shadows */
+  --shadow-vault-sm: var(--shadow-sm);
+  --shadow-vault-md: var(--shadow-md);
+  --shadow-vault-lg: var(--shadow-lg);
+  --shadow-vault-xl: var(--shadow-xl);
+  --shadow-vault-glow: var(--shadow-glow);
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-slide-up: slide-up 0.6s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
+  --animate-scale-in: scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 2s linear infinite;
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: var(--shadow-glow); }
+  50% { box-shadow: 0 0 60px rgba(139, 90, 74, 0.25); }
+}
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+.text-gradient {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-vault {
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+}
+
+.card-vault:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--gradient-accent);
+  color: var(--color-text-inverse);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: var(--color-accent);
+  font-weight: 500;
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* Decorative line */
+.line-accent {
+  height: 4px;
+  width: 60px;
+  background: var(--gradient-accent);
+  border-radius: var(--radius-full);
+}
+
+/* Section wrapper */
+.section-wrapper {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-wrapper {
+    padding: 0 2rem;
+  }
+}
+
+/* Stagger animation delays */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-text-inverse);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-light);
+}

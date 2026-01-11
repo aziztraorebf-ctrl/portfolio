@@ -1,0 +1,68 @@
+{
+  "title": "Prompt & Process Vault",
+  "slug": "prompt-process-vault",
+  "tagline": "Personal knowledge vault with AI-powered image analysis",
+  "description": "A personal productivity tool for organizing prompts, digital assets, and process frameworks. Features automatic image analysis powered by Google Gemini, real-time sync with Firebase, and a clean dashboard interface.",
+  "status": "production",
+  "featured": false,
+  "startDate": "2024-12-01",
+  "endDate": null,
+  "demoUrl": "https://prompt-process-vault-625392721698.us-west1.run.app/",
+  "githubUrl": "https://github.com/aziztraorebf-ctrl/PROMPT-PROCESS-VAULT",
+  "techStack": {
+    "platform": ["Google AI Studio"],
+    "frontend": ["React 18", "TypeScript", "Tailwind CSS"],
+    "backend": ["Firebase Firestore", "Firebase Storage"],
+    "auth": ["Firebase Authentication"],
+    "ai": ["Google Gemini 2.5 Flash"],
+    "tooling": ["Vite", "PWA/Service Worker"]
+  },
+  "metrics": {
+    "modules": "4",
+    "aiFeature": "Magic Analysis",
+    "platform": "Google AI Studio"
+  },
+  "features": [
+    {
+      "name": "Dashboard",
+      "description": "Central hub with stats, recent items, and quick actions for all modules",
+      "icon": "dashboard"
+    },
+    {
+      "name": "Prompts Manager",
+      "description": "Organize prompts by category (Coding, Marketing, UI/UX, etc.) with tags and favorites",
+      "icon": "prompts"
+    },
+    {
+      "name": "Assets Gallery",
+      "description": "Image library with AI-powered automatic analysis - generates title, description, tags, and categorization",
+      "icon": "assets"
+    },
+    {
+      "name": "Frameworks Builder",
+      "description": "Create and manage step-by-step process documentation for repeatable workflows",
+      "icon": "frameworks"
+    }
+  ],
+  "aiHighlight": {
+    "name": "Magic Analysis",
+    "model": "Gemini 2.5 Flash",
+    "description": "Upload any image and Gemini automatically analyzes it to generate a professional title, detailed description, relevant tags, and suggests the best collection category.",
+    "capabilities": [
+      "Automatic title generation",
+      "Contextual description writing",
+      "Smart tag suggestions",
+      "Collection categorization"
+    ]
+  },
+  "categories": {
+    "prompts": ["Coding", "UI/UX", "Marketing", "Content", "Data", "Productivity", "Strategy", "Sales", "HR", "Design"],
+    "assets": ["Marketing & Strategy", "Development & Code", "Design & UI/UX", "Lifestyle & Fashion", "Productivity & Ops", "Content Creation", "Archives / Other"]
+  },
+  "roadmap": [
+    "Enhanced mobile responsiveness",
+    "Bulk import/export functionality",
+    "Prompt templates library",
+    "Framework sharing capabilities"
+  ]
+}

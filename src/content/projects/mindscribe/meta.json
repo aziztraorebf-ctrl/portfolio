@@ -1,0 +1,90 @@
+{
+  "title": "MindScribe",
+  "slug": "mindscribe",
+  "tagline": "Voice-first note-taking with AI enhancement",
+  "description": "A dual-mode application for voice dictation and prompt optimization. Record your thoughts, get instant AI transcription, and transform raw recordings into polished notes in multiple styles - all powered by Google Gemini.",
+  "status": "production",
+  "featured": false,
+  "startDate": "2024-12-15",
+  "endDate": null,
+  "demoUrl": "https://mindscribe-625392721698.us-west1.run.app",
+  "githubUrl": "https://github.com/aziztraorebf-ctrl/Voice-APP",
+  "techStack": {
+    "platform": ["Google AI Studio"],
+    "frontend": ["React", "TypeScript", "CSS"],
+    "backend": ["Firebase Firestore"],
+    "auth": ["Firebase Authentication", "Google Sign-In"],
+    "ai": ["Google Gemini Flash"],
+    "rendering": ["Marked.js", "Mermaid.js"],
+    "tooling": ["Vite", "PWA/Service Worker"]
+  },
+  "metrics": {
+    "modes": "2",
+    "polishStyles": "5",
+    "platform": "Google AI Studio"
+  },
+  "modes": [
+    {
+      "name": "Notes Mode",
+      "description": "Voice-first note creation with AI-powered transcription and enhancement",
+      "icon": "microphone",
+      "features": [
+        "Live audio recording with waveform visualization",
+        "Automatic transcription via Gemini Flash",
+        "Multi-style Polish (Formal, Casual, Meeting Minutes, Email, Poem)",
+        "AI Insights with executive summaries and action items",
+        "Auto-generated Mermaid.js diagrams from content"
+      ]
+    },
+    {
+      "name": "Prompter Mode",
+      "description": "Voice-powered prompt crafting and optimization interface",
+      "icon": "sparkles",
+      "features": [
+        "Voice dictation input for prompts",
+        "Structured optimization (technical specs in French)",
+        "Natural optimization (persona-preserving refinement)",
+        "Prompt history with date tracking",
+        "One-click copy to clipboard"
+      ]
+    }
+  ],
+  "voiceEnhancement": {
+    "name": "Voice Enhancement Pipeline",
+    "model": "Gemini Flash",
+    "description": "From raw audio to polished content in seconds. Gemini transcribes your voice recordings and can transform them into multiple formats based on your needs.",
+    "polishStyles": [
+      {
+        "name": "Formal",
+        "description": "Professional tone suitable for business documents"
+      },
+      {
+        "name": "Casual",
+        "description": "Relaxed, conversational style"
+      },
+      {
+        "name": "Meeting Minutes",
+        "description": "Structured format with attendees, decisions, action items"
+      },
+      {
+        "name": "Email",
+        "description": "Ready-to-send email format"
+      },
+      {
+        "name": "Poem",
+        "description": "Creative poetic transformation"
+      }
+    ]
+  },
+  "widgetMode": {
+    "name": "Widget Mode",
+    "description": "Standalone floating window for quick prompt generation. Access via ?mode=widget parameter for a focused, distraction-free prompter interface.",
+    "useCase": "Quick prompt optimization without leaving your current workflow"
+  },
+  "roadmap": [
+    "Multi-language transcription support",
+    "Custom vocabulary training",
+    "Export to various formats (PDF, Notion, etc.)",
+    "Team collaboration features"
+  ]
+}

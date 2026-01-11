@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  {
+    type: 'Full-Stack Development',
+    description: 'Building complete applications from database to deployment',
+    skills: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL']
+  },
+  {
+    type: 'AI-Orchestrated Workflows',
+    description: 'Leveraging Claude Code and MCP servers for intelligent automation',
+    skills: ['Claude Code', 'MCP Servers', 'Prompt Engineering', 'Automation']
+  },
+  {
+    type: 'Quality Engineering',
+    description: 'Test-driven development and systematic debugging practices',
+    skills: ['pytest', 'Playwright', 'TDD', 'E2E Testing']
+  }
+];
+
+const principles = [
+  {
+    title: 'Evidence Over Claims',
+    description: 'Every completion claim requires proof. Tests passing, logs verified, behavior confirmed.'
+  },
+  {
+    title: 'Documentation First',
+    description: 'Check official docs before writing code. Context7 MCP prevents hallucinations.'
+  },
+  {
+    title: 'Real Data Validation',
+    description: 'Mocks for unit tests, real data for final validation. No shortcuts.'
+  },
+  {
+    title: 'Systematic Debugging',
+    description: 'Root cause investigation before fixes. No guessing, no random attempts.'
+  }
+];
+---
+
+<BaseLayout
+  title="About - Portfolio"
+  description="Software engineer specializing in AI-orchestrated development and production-grade applications."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-secondary)] to-transparent"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-fade-in">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors mb-8"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
+        </a>
+
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-text-primary)] mb-4">
+          About Me
+        </h1>
+
+        <p class="text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Building production-grade software with AI orchestration,
+          systematic engineering practices, and a focus on quality.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="py-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-6">
+          I'm a software engineer who believes in building things right the first time.
+          My approach combines modern AI tools with rigorous engineering practices to
+          create reliable, maintainable software.
+        </p>
+        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed mb-6">
+          Working with Claude Code and the Model Context Protocol (MCP), I've developed
+          workflows that integrate AI assistance directly into the development process -
+          from documentation lookup to deployment automation.
+        </p>
+        <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+          The result is faster development without sacrificing quality. Every project
+          goes through mandatory checkpoints, hostile code reviews, and evidence-based
+          completion verification.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Expertise
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          What I Do
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {experience.map((item) => (
+          <div class="card-vault p-8">
+            <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3">
+              {item.type}
+            </h3>
+            <p class="text-[var(--color-text-secondary)] mb-6">
+              {item.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {item.skills.map((skill) => (
+                <span class="px-3 py-1 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-xs text-[var(--color-text-muted)]">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Philosophy
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          Engineering Principles
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        {principles.map((principle) => (
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-display text-lg font-semibold text-[var(--color-text-primary)] mb-2">
+                {principle.title}
+              </h3>
+              <p class="text-[var(--color-text-secondary)]">
+                {principle.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)] mb-6">
+        Let's Work Together
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-8">
+        Interested in collaborating on a project or have questions about my methodology?
+        Check out my work on GitHub.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="https://github.com/aziztraorebf-ctrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary inline-flex items-center justify-center gap-2"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+          </svg>
+          View GitHub Profile
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

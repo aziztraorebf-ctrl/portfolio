@@ -1,0 +1,134 @@
+---
+import ThemeToggle from './ThemeToggle';
+
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/methodology', label: 'Methodology' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-[var(--color-bg-primary)]/80 border-b border-[var(--color-border-light)]">
+  <nav class="section-wrapper">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="group flex items-center gap-3">
+        <div class="relative w-10 h-10 md:w-12 md:h-12">
+          <!-- Vault door icon -->
+          <svg viewBox="0 0 48 48" fill="none" class="w-full h-full">
+            <rect x="4" y="8" width="40" height="32" rx="4"
+                  class="fill-[var(--color-accent)] opacity-20" />
+            <rect x="4" y="8" width="40" height="32" rx="4"
+                  class="stroke-[var(--color-accent)] fill-none" stroke-width="2" />
+            <circle cx="24" cy="24" r="8"
+                    class="stroke-[var(--color-accent)] fill-none" stroke-width="2" />
+            <circle cx="24" cy="24" r="3"
+                    class="fill-[var(--color-accent)]" />
+            <line x1="24" y1="16" x2="24" y2="12"
+                  class="stroke-[var(--color-accent)]" stroke-width="2" stroke-linecap="round" />
+            <line x1="24" y1="36" x2="24" y2="32"
+                  class="stroke-[var(--color-accent)]" stroke-width="2" stroke-linecap="round" />
+            <line x1="16" y1="24" x2="12" y2="24"
+                  class="stroke-[var(--color-accent)]" stroke-width="2" stroke-linecap="round" />
+            <line x1="36" y1="24" x2="32" y2="24"
+                  class="stroke-[var(--color-accent)]" stroke-width="2" stroke-linecap="round" />
+          </svg>
+          <!-- Subtle glow on hover -->
+          <div class="absolute inset-0 bg-[var(--color-accent)] rounded-lg opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300"></div>
+        </div>
+        <div class="hidden sm:block">
+          <span class="font-display text-lg md:text-xl font-semibold text-[var(--color-text-primary)]">
+            Aziz Traore
+          </span>
+          <span class="block text-xs text-[var(--color-text-muted)] -mt-0.5">
+            AI-Orchestrated Engineering
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
+        {navLinks.map((link) => {
+          const isActive = currentPath === link.href ||
+                          (link.href !== '/' && currentPath.startsWith(link.href));
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                "relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300",
+                isActive
+                  ? "text-[var(--color-accent)]"
+                  : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-secondary)]"
+              ]}
+            >
+              {link.label}
+              {isActive && (
+                <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[var(--color-accent)]"></span>
+              )}
+            </a>
+          );
+        })}
+      </div>
+
+      <!-- Right side: Theme toggle + Mobile menu -->
+      <div class="flex items-center gap-2">
+        <ThemeToggle client:load />
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg hover:bg-[var(--color-bg-secondary)] transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg class="w-6 h-6 text-[var(--color-text-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path id="close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-[var(--color-border-light)]">
+    <nav class="section-wrapper py-4 space-y-1">
+      {navLinks.map((link) => {
+        const isActive = currentPath === link.href ||
+                        (link.href !== '/' && currentPath.startsWith(link.href));
+        return (
+          <a
+            href={link.href}
+            class:list={[
+              "block px-4 py-3 rounded-lg font-medium transition-colors",
+              isActive
+                ? "bg-[var(--color-accent)] text-[var(--color-text-inverse)]"
+                : "text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-secondary)]"
+            ]}
+          >
+            {link.label}
+          </a>
+        );
+      })}
+    </nav>
+  </div>
+</header>
+
+<!-- Spacer for fixed header -->
+<div class="h-16 md:h-20"></div>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden', !isOpen);
+    closeIcon?.classList.toggle('hidden', isOpen);
+  });
+</script>

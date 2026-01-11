@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const featuredProject = {
+  title: 'ArbitrageVault BookFinder',
+  tagline: 'AI-powered Amazon book sourcing platform',
+  description: 'Full-stack application with automated product discovery, pricing analysis, and opportunity scoring for book arbitrage. Built with FastAPI, React, and PostgreSQL.',
+  metrics: [
+    { label: 'Tests Passing', value: '880+' },
+    { label: 'Development Phases', value: '13' },
+    { label: 'API Endpoints', value: '40+' },
+    { label: 'Uptime', value: '99.9%' }
+  ],
+  techStack: ['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Firebase Auth', 'Tailwind CSS'],
+  url: '/projects/arbitragevault-bookfinder'
+};
+
+const methodologyHighlights = [
+  {
+    title: 'Zero-Tolerance Engineering',
+    description: 'Mandatory checkpoints, hostile code review, and verification gates before any completion claim.',
+    icon: 'shield'
+  },
+  {
+    title: 'MCP Server Integration',
+    description: 'GitHub, Render, Netlify, Neon, Context7 - automated DevOps through Model Context Protocol.',
+    icon: 'server'
+  },
+  {
+    title: 'Superpowers Workflow',
+    description: 'Systematic debugging, TDD, verification-before-completion - skills that enforce rigor.',
+    icon: 'zap'
+  }
+];
+
+const skills = [
+  { name: 'Python', category: 'Backend' },
+  { name: 'FastAPI', category: 'Backend' },
+  { name: 'TypeScript', category: 'Frontend' },
+  { name: 'React', category: 'Frontend' },
+  { name: 'PostgreSQL', category: 'Database' },
+  { name: 'SQLAlchemy', category: 'Database' },
+  { name: 'Tailwind CSS', category: 'Styling' },
+  { name: 'Firebase', category: 'Auth' },
+  { name: 'Playwright', category: 'Testing' },
+  { name: 'pytest', category: 'Testing' },
+  { name: 'Docker', category: 'DevOps' },
+  { name: 'Git', category: 'DevOps' }
+];
+---
+
+<BaseLayout
+  title="Portfolio - AI-Orchestrated Software Engineering"
+  description="Showcasing software projects built with AI orchestration, rigorous testing, and modern development practices."
+>
+  <!-- Hero Section -->
+  <section class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+      <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, var(--color-text-primary) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="absolute top-20 left-10 w-20 h-20 bg-[var(--color-accent)] opacity-10 rounded-full blur-xl animate-float"></div>
+    <div class="absolute bottom-40 right-20 w-32 h-32 bg-[var(--color-accent)] opacity-10 rounded-full blur-xl animate-float" style="animation-delay: -2s;"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="animate-fade-in">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] mb-8">
+          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+          Open to new opportunities
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-text-primary)] leading-tight mb-6">
+          AI-Orchestrated<br />
+          <span class="text-gradient">Software Engineering</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed">
+          Building production-grade applications with rigorous testing,
+          zero-tolerance engineering practices, and intelligent automation.
+        </p>
+
+        <!-- CTAs -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#featured-project"
+            class="btn-primary inline-flex items-center justify-center gap-2 group"
+          >
+            View Featured Project
+            <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+          <a
+            href="/methodology"
+            class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
+          >
+            Explore Methodology
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-[var(--color-text-muted)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- Featured Project Section -->
+  <section id="featured-project" class="py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16 animate-slide-up">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Featured Work
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
+          {featuredProject.title}
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)]">
+          {featuredProject.tagline}
+        </p>
+      </div>
+
+      <!-- Project Card -->
+      <div class="card-vault p-8 sm:p-12 animate-scale-in">
+        <div class="grid lg:grid-cols-2 gap-12">
+          <!-- Left: Description & Tech -->
+          <div class="space-y-8">
+            <p class="text-lg text-[var(--color-text-secondary)] leading-relaxed">
+              {featuredProject.description}
+            </p>
+
+            <!-- Tech Stack -->
+            <div>
+              <h3 class="text-sm font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-4">
+                Technology Stack
+              </h3>
+              <div class="flex flex-wrap gap-2">
+                {featuredProject.techStack.map((tech) => (
+                  <span class="px-3 py-1 rounded-full bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)]">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <!-- CTA -->
+            <a
+              href={featuredProject.url}
+              class="inline-flex items-center gap-2 text-[var(--color-accent)] font-medium hover:underline group"
+            >
+              View Full Case Study
+              <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Right: Metrics -->
+          <div class="grid grid-cols-2 gap-6">
+            {featuredProject.metrics.map((metric) => (
+              <div class="p-6 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-center group hover:border-[var(--color-accent)] transition-colors duration-300">
+                <div class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-accent)] mb-2">
+                  {metric.value}
+                </div>
+                <div class="text-sm text-[var(--color-text-muted)]">
+                  {metric.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Methodology Preview Section -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          How I Work
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
+          Engineering Methodology
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          A systematic approach combining AI orchestration with rigorous engineering practices.
+        </p>
+      </div>
+
+      <!-- Methodology Cards -->
+      <div class="grid md:grid-cols-3 gap-8 mb-12">
+        {methodologyHighlights.map((item) => (
+          <div class="card-vault p-8 group">
+            <div class="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mb-6 group-hover:bg-[var(--color-accent)]/20 transition-colors duration-300">
+              {item.icon === 'shield' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              )}
+              {item.icon === 'server' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                </svg>
+              )}
+              {item.icon === 'zap' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3">
+              {item.title}
+            </h3>
+            <p class="text-[var(--color-text-secondary)] leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="text-center">
+        <a
+          href="/methodology"
+          class="btn-primary inline-flex items-center gap-2 group"
+        >
+          Explore Full Methodology
+          <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Technical Skills
+        </span>
+        <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
+          Technology Stack
+        </h2>
+      </div>
+
+      <!-- Skills Grid -->
+      <div class="flex flex-wrap justify-center gap-4">
+        {skills.map((skill) => (
+          <div class="px-5 py-3 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 group cursor-default">
+            <span class="text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-300">
+              {skill.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

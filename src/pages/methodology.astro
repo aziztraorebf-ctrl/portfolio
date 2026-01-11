@@ -1,0 +1,487 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mcpServers = [
+  {
+    name: 'GitHub MCP',
+    icon: 'github',
+    description: 'Repository management, PRs, issues, and automated commits',
+    useCases: ['Commit automation', 'PR creation', 'Issue tracking', 'Code review']
+  },
+  {
+    name: 'Context7 MCP',
+    icon: 'book',
+    description: 'Official library documentation lookup - prevents hallucinations',
+    useCases: ['API verification', 'Pattern validation', 'Version checking', 'Method signatures']
+  },
+  {
+    name: 'Render MCP',
+    icon: 'server',
+    description: 'Production logs, deployments, and health monitoring',
+    useCases: ['Log analysis', 'Deploy triggers', 'Service health', 'Environment vars']
+  },
+  {
+    name: 'Netlify MCP',
+    icon: 'globe',
+    description: 'Frontend deployments, builds, and site configuration',
+    useCases: ['Deploy preview', 'Build logs', 'DNS config', 'Form submissions']
+  },
+  {
+    name: 'Neon MCP',
+    icon: 'database',
+    description: 'PostgreSQL database operations and branch management',
+    useCases: ['Query execution', 'Branch creation', 'Schema changes', 'Performance metrics']
+  }
+];
+
+const superpowers = [
+  {
+    name: 'systematic-debugging',
+    trigger: 'Bug or error encountered',
+    description: 'Root cause investigation before any fix attempt. No guessing.',
+    phases: ['Evidence gathering', 'Hypothesis formation', 'Minimal testing', 'Verified fix']
+  },
+  {
+    name: 'verification-before-completion',
+    trigger: 'Before claiming "done"',
+    description: 'Mandatory verification with proof before any completion claim.',
+    phases: ['Run tests', 'Check logs', 'Verify behavior', 'Document evidence']
+  },
+  {
+    name: 'test-driven-development',
+    trigger: 'New feature implementation',
+    description: 'Write failing tests first, then implement to make them pass.',
+    phases: ['Write failing test', 'Minimal implementation', 'Refactor', 'Verify']
+  },
+  {
+    name: 'requesting-code-review',
+    trigger: 'Before merge or deploy',
+    description: 'Structured code review with checklist verification.',
+    phases: ['Self-review', 'Edge cases', 'Security check', 'Approval']
+  }
+];
+
+const qualityGates = [
+  {
+    question: 'Superpowers skills invoked?',
+    requirement: 'List which skills used and their results'
+  },
+  {
+    question: 'Context7-First for external APIs?',
+    requirement: 'Documentation link or "N/A - no external API"'
+  },
+  {
+    question: 'MCP validation cross-check?',
+    requirement: 'Compare MCP direct vs Backend API results'
+  },
+  {
+    question: 'verification-before-completion executed?',
+    requirement: 'Full output from the skill'
+  },
+  {
+    question: 'Tests pass with real data?',
+    requirement: 'Command and output'
+  },
+  {
+    question: 'Hostile code review done?',
+    requirement: 'List of edge cases verified'
+  }
+];
+
+const hostileReviewQuestions = [
+  'What edge cases can break this code?',
+  'What invalid data can arrive?',
+  'What impossible states are possible?',
+  'What race conditions can occur?',
+  'What null/undefined will explode?'
+];
+
+const lessonsLearned = [
+  {
+    category: 'Technical',
+    lessons: [
+      'Never divide BSR by 100 - it\'s an integer rank, not a decimal',
+      'Keepa API returns nested data - always use defensive parsing',
+      'Connection pooling is critical - Neon solved pool exhaustion issues',
+      'Firebase token verification must happen server-side'
+    ]
+  },
+  {
+    category: 'Process',
+    lessons: [
+      'Merged PR does not equal production data - always verify API',
+      'Frontend changes only after backend API validation',
+      'Real data for final validation - mocks for unit tests only',
+      'Commit frequently to avoid local/deployed code drift'
+    ]
+  },
+  {
+    category: 'UX',
+    lessons: [
+      'Mobile-first saves rework later',
+      'Loading states prevent confusion',
+      'Error messages should be actionable',
+      '30-day retention is enough for search history'
+    ]
+  }
+];
+---
+
+<BaseLayout
+  title="Methodology - AI-Orchestrated Development"
+  description="Zero-Tolerance Engineering methodology with MCP servers, Superpowers skills, and quality gates."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-secondary)] to-transparent"></div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 animate-fade-in">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors mb-8"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          Back to Home
+        </a>
+
+        <span class="inline-block px-4 py-2 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-6">
+          Development Philosophy
+        </span>
+
+        <h1 class="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-[var(--color-text-primary)] mb-4">
+          Zero-Tolerance<br />
+          <span class="text-gradient">Engineering</span>
+        </h1>
+
+        <p class="text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          A systematic approach combining AI orchestration with rigorous verification,
+          mandatory checkpoints, and evidence-based completion claims.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Principles Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="card-vault p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3">
+            Documentation-First
+          </h3>
+          <p class="text-[var(--color-text-secondary)]">
+            Always consult official documentation via Context7 before writing code.
+            Never assume local docs are up-to-date.
+          </p>
+        </div>
+
+        <div class="card-vault p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3">
+            BUILD-TEST-VALIDATE
+          </h3>
+          <p class="text-[var(--color-text-secondary)]">
+            Continuous cycle with real data. Local tests, API validation,
+            frontend verification, E2E confirmation.
+          </p>
+        </div>
+
+        <div class="card-vault p-8 text-center">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center">
+            <svg class="w-8 h-8 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3">
+            Evidence-Based Completion
+          </h3>
+          <p class="text-[var(--color-text-secondary)]">
+            Never claim "done" without proof. Mandatory checkpoint validation
+            with documented evidence.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MCP Servers Section -->
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Model Context Protocol
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          MCP Server Integration
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Direct API access to development infrastructure through Claude Code,
+          enabling automated DevOps without leaving the conversation.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {mcpServers.map((server) => (
+          <div class="card-vault p-6">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center flex-shrink-0">
+                {server.icon === 'github' && (
+                  <svg class="w-6 h-6 text-[var(--color-accent)]" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                )}
+                {server.icon === 'book' && (
+                  <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                )}
+                {server.icon === 'server' && (
+                  <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                  </svg>
+                )}
+                {server.icon === 'globe' && (
+                  <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                  </svg>
+                )}
+                {server.icon === 'database' && (
+                  <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                  </svg>
+                )}
+              </div>
+              <div>
+                <h3 class="font-display text-lg font-semibold text-[var(--color-text-primary)]">
+                  {server.name}
+                </h3>
+                <p class="text-sm text-[var(--color-text-secondary)]">
+                  {server.description}
+                </p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {server.useCases.map((useCase) => (
+                <span class="px-2 py-1 rounded-full bg-[var(--color-bg-primary)] text-xs text-[var(--color-text-muted)]">
+                  {useCase}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Superpowers Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Mandatory Skills
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          Superpowers Workflow
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Skills that must be invoked in specific situations - not optional best practices,
+          but mandatory enforcement of engineering rigor.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        {superpowers.map((skill) => (
+          <div class="card-vault p-8">
+            <div class="flex items-start justify-between mb-4">
+              <div>
+                <code class="px-2 py-1 rounded bg-[var(--color-bg-secondary)] text-[var(--color-accent)] text-sm font-mono">
+                  {skill.name}
+                </code>
+                <p class="mt-2 text-sm text-[var(--color-text-muted)]">
+                  Trigger: {skill.trigger}
+                </p>
+              </div>
+            </div>
+            <p class="text-[var(--color-text-secondary)] mb-4">
+              {skill.description}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {skill.phases.map((phase, idx) => (
+                <span class="flex items-center gap-1 px-2 py-1 rounded bg-[var(--color-accent)]/10 text-xs text-[var(--color-accent)]">
+                  <span class="font-bold">{idx + 1}.</span> {phase}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Gates Section -->
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Checkpoint Validation
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          Mandatory Quality Gates
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Before claiming any task is "done", each question must be answered with proof.
+          No exceptions.
+        </p>
+      </div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="card-vault divide-y divide-[var(--color-border)]">
+          {qualityGates.map((gate, idx) => (
+            <div class="p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-8 h-8 rounded-full bg-[var(--color-accent)] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 class="font-semibold text-[var(--color-text-primary)] mb-1">
+                    {gate.question}
+                  </h3>
+                  <p class="text-sm text-[var(--color-text-secondary)]">
+                    Required: {gate.requirement}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hostile Code Review Section -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block px-3 py-1 rounded-full bg-red-500/10 text-red-600 text-sm font-medium mb-4">
+            Pre-Commit Gate
+          </span>
+          <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)] mb-6">
+            Hostile Code Review
+          </h2>
+          <p class="text-lg text-[var(--color-text-secondary)] mb-6">
+            Before every commit, switch posture from "does it work?" to
+            "how can I break this?". Actively seek bugs instead of confirming success.
+          </p>
+          <div class="space-y-4">
+            {hostileReviewQuestions.map((question) => (
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span class="text-[var(--color-text-secondary)]">{question}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="card-vault p-8 bg-red-500/5 border-red-500/20">
+          <h3 class="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-4">
+            Pre-Commit Checklist
+          </h3>
+          <ul class="space-y-3">
+            <li class="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <input type="checkbox" class="w-4 h-4 accent-[var(--color-accent)]" />
+              Types strict (no <code class="text-xs bg-[var(--color-bg-secondary)] px-1 rounded">any</code>, no <code class="text-xs bg-[var(--color-bg-secondary)] px-1 rounded">as unknown</code>)
+            </li>
+            <li class="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <input type="checkbox" class="w-4 h-4 accent-[var(--color-accent)]" />
+              Error handling complete (try/catch, .catch())
+            </li>
+            <li class="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <input type="checkbox" class="w-4 h-4 accent-[var(--color-accent)]" />
+              Input validation (Zod/Pydantic)
+            </li>
+            <li class="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <input type="checkbox" class="w-4 h-4 accent-[var(--color-accent)]" />
+              Tests cover negative cases
+            </li>
+            <li class="flex items-center gap-2 text-[var(--color-text-secondary)]">
+              <input type="checkbox" class="w-4 h-4 accent-[var(--color-accent)]" />
+              No hardcoded secrets
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lessons Learned Section -->
+  <section class="py-16 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <span class="inline-block px-3 py-1 rounded-full bg-[var(--color-accent)]/10 text-[var(--color-accent)] text-sm font-medium mb-4">
+          Hard-Won Knowledge
+        </span>
+        <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)]">
+          Lessons Learned
+        </h2>
+        <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Patterns discovered through real-world debugging, production incidents,
+          and systematic improvement over 13 development phases.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        {lessonsLearned.map((category) => (
+          <div class="card-vault p-6">
+            <h3 class="font-display text-lg font-semibold text-[var(--color-text-primary)] mb-4 pb-2 border-b border-[var(--color-border)]">
+              {category.category}
+            </h3>
+            <ul class="space-y-3">
+              {category.lessons.map((lesson) => (
+                <li class="flex items-start gap-2 text-sm text-[var(--color-text-secondary)]">
+                  <svg class="w-4 h-4 text-[var(--color-accent)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                  {lesson}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="font-display text-3xl font-bold text-[var(--color-text-primary)] mb-6">
+        See It In Action
+      </h2>
+      <p class="text-lg text-[var(--color-text-secondary)] mb-8">
+        This methodology was applied throughout the development of ArbitrageVault BookFinder.
+        See the 13-phase timeline and how each principle was enforced.
+      </p>
+      <a href="/projects/arbitragevault-bookfinder" class="btn-primary inline-flex items-center gap-2 group">
+        View Project Case Study
+        <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

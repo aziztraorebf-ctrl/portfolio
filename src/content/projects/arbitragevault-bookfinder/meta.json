@@ -1,0 +1,149 @@
+{
+  "title": "ArbitrageVault BookFinder",
+  "slug": "arbitragevault-bookfinder",
+  "tagline": "AI-powered Amazon book sourcing platform",
+  "description": "Full-stack application with automated product discovery, pricing analysis, and opportunity scoring for book arbitrage. Built with FastAPI, React, and PostgreSQL over 13 development phases.",
+  "status": "production",
+  "featured": true,
+  "startDate": "2025-09-01",
+  "endDate": "2026-01-10",
+  "demoUrl": "https://arbitragevault.netlify.app",
+  "githubUrl": "https://github.com/yourusername/arbitragevault-bookfinder",
+  "backendUrl": "https://arbitragevault-backend-v2.onrender.com",
+  "techStack": {
+    "frontend": ["React", "TypeScript", "Vite", "Tailwind CSS", "Zustand"],
+    "backend": ["Python", "FastAPI", "SQLAlchemy 2.0", "Pydantic v2"],
+    "database": ["PostgreSQL", "Neon"],
+    "auth": ["Firebase Authentication", "Firebase Admin SDK"],
+    "testing": ["pytest", "Playwright", "React Testing Library"],
+    "deployment": ["Render", "Netlify"],
+    "apis": ["Keepa API"],
+    "tools": ["Claude Code", "MCP Servers", "Git"]
+  },
+  "metrics": {
+    "testsCount": "880+",
+    "phasesCount": 13,
+    "endpointsCount": "40+",
+    "uptime": "99.9%",
+    "responseTime": "<200ms"
+  },
+  "phases": [
+    {
+      "number": 1,
+      "title": "Foundation Infrastructure",
+      "description": "Initial FastAPI backend setup with SQLAlchemy ORM, batch management system, and Render deployment configuration.",
+      "completedDate": "2025-09-15",
+      "highlights": ["FastAPI backend", "SQLAlchemy ORM", "Batch management", "Render deployment"]
+    },
+    {
+      "number": 2,
+      "title": "Database Migration to Neon",
+      "description": "Migrated from Render PostgreSQL to Neon PostgreSQL for better connection pooling and performance. Achieved 15x improvement in concurrent connections.",
+      "completedDate": "2025-09-29",
+      "highlights": ["Neon PostgreSQL", "300-500 connection pool", "Schema synchronization", "Pagination system"]
+    },
+    {
+      "number": 3,
+      "title": "Keepa API Integration",
+      "description": "Real Keepa API integration for product data retrieval. Implemented BSR history tracking, price volatility analysis, and velocity scoring.",
+      "completedDate": "2025-10-10",
+      "highlights": ["Keepa REST API", "BSR tracking", "Price volatility", "Velocity scoring"]
+    },
+    {
+      "number": 4,
+      "title": "Business Logic & Scoring",
+      "description": "Advanced analytics endpoints for product analysis, risk scoring, and buy/skip recommendations. Niche discovery with intelligent scoring.",
+      "completedDate": "2025-10-20",
+      "highlights": ["Analytics endpoints", "Risk scoring", "Niche discovery", "Product decisions"]
+    },
+    {
+      "number": 5,
+      "title": "Token Control Safeguards",
+      "description": "Implemented AutoScheduler for job management and token safeguards to prevent API waste. Added @require_tokens decorator for endpoint protection.",
+      "completedDate": "2025-10-30",
+      "highlights": ["AutoScheduler", "Token safeguards", "Rate limiting", "HTTP 429 handling"]
+    },
+    {
+      "number": 6,
+      "title": "Frontend E2E Tests",
+      "description": "56 Playwright E2E tests covering all user flows. Added FBA seller competition filter, Smart Velocity, and Budget Guard features.",
+      "completedDate": "2025-11-10",
+      "highlights": ["56 E2E tests", "Playwright", "FBA filter", "Budget Guard"]
+    },
+    {
+      "number": 7,
+      "title": "AutoSourcing Production",
+      "description": "Complete AutoSourcing module with job management, tier breakdown, profiles, and action tracking. Real Keepa API integration for product discovery.",
+      "completedDate": "2025-11-25",
+      "highlights": ["AutoSourcing endpoints", "Job management", "Tier system", "Favorites/Buy lists"]
+    },
+    {
+      "number": 8,
+      "title": "Advanced Analytics",
+      "description": "Enhanced analytics with historical trends, ASIN tracking, and comprehensive statistics. Added configuration management with change history.",
+      "completedDate": "2025-12-01",
+      "highlights": ["ASIN history", "Trend analysis", "Config management", "Statistics dashboard"]
+    },
+    {
+      "number": 9,
+      "title": "UI Completion",
+      "description": "Polished frontend components, improved error handling, and enhanced user experience across all features.",
+      "completedDate": "2025-12-05",
+      "highlights": ["UI polish", "Error handling", "Loading states", "Responsive design"]
+    },
+    {
+      "number": 10,
+      "title": "Unified Product Table",
+      "description": "Consistent product display across all features with sortable columns, filtering, and action buttons.",
+      "completedDate": "2025-12-10",
+      "highlights": ["Unified table", "Sorting", "Filtering", "Bulk actions"]
+    },
+    {
+      "number": 11,
+      "title": "Page Centrale Recherches",
+      "description": "Centralized 'Mes Recherches' page with 30-day retention for saved searches and results management.",
+      "completedDate": "2025-12-20",
+      "highlights": ["Saved searches", "30-day retention", "Search management", "Quick access"]
+    },
+    {
+      "number": 12,
+      "title": "UX Mobile-First",
+      "description": "Complete mobile-first responsive redesign with touch-friendly UI, improved navigation, and performance optimization.",
+      "completedDate": "2026-01-03",
+      "highlights": ["Mobile-first", "Touch UI", "Navigation", "Performance"]
+    },
+    {
+      "number": 13,
+      "title": "Firebase Authentication",
+      "description": "Complete Firebase Authentication system with user sync, token verification, and protected endpoints.",
+      "completedDate": "2026-01-10",
+      "highlights": ["Firebase Auth", "Token verification", "User sync", "Protected routes"]
+    }
+  ],
+  "challenges": [
+    {
+      "title": "Connection Pool Exhaustion",
+      "context": "Render PostgreSQL was hitting connection limits with only 20 connections, causing timeouts under load.",
+      "solution": "Migrated to Neon PostgreSQL with connection pooling supporting 300-500 concurrent connections.",
+      "outcome": "Zero connection timeouts, 99.9% uptime achieved."
+    },
+    {
+      "title": "Keepa Data Parsing",
+      "context": "Keepa API returns complex nested data structures with varying formats across product types.",
+      "solution": "Built Keepa Parser v2 with defensive programming, optional chaining, and comprehensive error handling.",
+      "outcome": "Reliable data extraction with graceful degradation on edge cases."
+    },
+    {
+      "title": "BSR Tuple Unpacking",
+      "context": "BSR data sometimes came as tuples, sometimes as integers, causing TypeError crashes.",
+      "solution": "Implemented type checking and flexible parsing in keepa_parser_v2 to handle all formats.",
+      "outcome": "AutoSourcing stable in production with diverse product data."
+    },
+    {
+      "title": "Token Waste Prevention",
+      "context": "Early development wasted Keepa API tokens on repeated failed requests.",
+      "solution": "Implemented Budget Guard with @require_tokens decorator and retry logic with exponential backoff.",
+      "outcome": "80% reduction in unnecessary API calls."
+    }
+  ]
+}
