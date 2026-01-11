@@ -100,6 +100,76 @@ collections:
           - { label: "Featured", name: "featured", widget: "boolean" }
           - { label: "Status", name: "status", widget: "string" }
 
+  # Homepage Settings
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - label: "Homepage Content"
+        name: "homepage-content"
+        file: "src/data/homepage.json"
+        fields:
+          # Hero Section
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Show Badge", name: "badgeActive", widget: "boolean", default: true }
+              - { label: "Title Line 1", name: "titleLine1", widget: "string" }
+              - { label: "Title Line 2 (Gradient)", name: "titleLine2", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Primary CTA Text", name: "ctaPrimary", widget: "string" }
+              - { label: "Secondary CTA Text", name: "ctaSecondary", widget: "string" }
+
+          # Featured Project
+          - label: "Featured Project"
+            name: "featuredProject"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Project URL", name: "url", widget: "string" }
+              - label: "Metrics"
+                name: "metrics"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+              - label: "Tech Stack"
+                name: "techStack"
+                widget: "list"
+                field: { label: "Technology", name: "tech", widget: "string" }
+
+          # Methodology Section
+          - label: "Methodology Section"
+            name: "methodology"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "sectionTitle", widget: "string" }
+              - { label: "Section Subtitle", name: "sectionSubtitle", widget: "text" }
+              - label: "Highlights"
+                name: "highlights"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - label: "Icon"
+                    name: "icon"
+                    widget: "select"
+                    options: ["shield", "server", "zap", "code", "database", "cloud"]
+
+          # Skills
+          - label: "Skills"
+            name: "skills"
+            widget: "list"
+            fields:
+              - { label: "Skill Name", name: "name", widget: "string" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options: ["Backend", "Frontend", "Database", "Styling", "Auth", "Testing", "DevOps", "AI"]
+
   # About Page
   - name: "pages"
     label: "Pages"

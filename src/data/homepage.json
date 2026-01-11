@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "badge": "Open to new opportunities",
+    "badgeActive": true,
+    "titleLine1": "AI-Orchestrated",
+    "titleLine2": "Software Engineering",
+    "subtitle": "Building production-grade applications with rigorous testing, zero-tolerance engineering practices, and intelligent automation.",
+    "ctaPrimary": "View Featured Project",
+    "ctaSecondary": "Explore Methodology"
+  },
+  "featuredProject": {
+    "title": "ArbitrageVault BookFinder",
+    "tagline": "AI-powered Amazon book sourcing platform",
+    "description": "Full-stack application with automated product discovery, pricing analysis, and opportunity scoring for book arbitrage. Built with FastAPI, React, and PostgreSQL.",
+    "url": "/projects/arbitragevault-bookfinder",
+    "metrics": [
+      { "label": "Tests Passing", "value": "880+" },
+      { "label": "Development Phases", "value": "13" },
+      { "label": "API Endpoints", "value": "40+" },
+      { "label": "Uptime", "value": "99.9%" }
+    ],
+    "techStack": ["FastAPI", "React", "TypeScript", "PostgreSQL", "Firebase Auth", "Tailwind CSS"]
+  },
+  "methodology": {
+    "sectionTitle": "Engineering Methodology",
+    "sectionSubtitle": "A systematic approach combining AI orchestration with rigorous engineering practices.",
+    "highlights": [
+      {
+        "title": "Zero-Tolerance Engineering",
+        "description": "Mandatory checkpoints, hostile code review, and verification gates before any completion claim.",
+        "icon": "shield"
+      },
+      {
+        "title": "MCP Server Integration",
+        "description": "GitHub, Render, Netlify, Neon, Context7 - automated DevOps through Model Context Protocol.",
+        "icon": "server"
+      },
+      {
+        "title": "Superpowers Workflow",
+        "description": "Systematic debugging, TDD, verification-before-completion - skills that enforce rigor.",
+        "icon": "zap"
+      }
+    ]
+  },
+  "skills": [
+    { "name": "Python", "category": "Backend" },
+    { "name": "FastAPI", "category": "Backend" },
+    { "name": "TypeScript", "category": "Frontend" },
+    { "name": "React", "category": "Frontend" },
+    { "name": "PostgreSQL", "category": "Database" },
+    { "name": "SQLAlchemy", "category": "Database" },
+    { "name": "Tailwind CSS", "category": "Styling" },
+    { "name": "Firebase", "category": "Auth" },
+    { "name": "Playwright", "category": "Testing" },
+    { "name": "pytest", "category": "Testing" },
+    { "name": "Docker", "category": "DevOps" },
+    { "name": "Git", "category": "DevOps" }
+  ]
+}

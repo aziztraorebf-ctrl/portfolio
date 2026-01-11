@@ -1,52 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import homepageData from '../data/homepage.json';
 
-const featuredProject = {
-  title: 'ArbitrageVault BookFinder',
-  tagline: 'AI-powered Amazon book sourcing platform',
-  description: 'Full-stack application with automated product discovery, pricing analysis, and opportunity scoring for book arbitrage. Built with FastAPI, React, and PostgreSQL.',
-  metrics: [
-    { label: 'Tests Passing', value: '880+' },
-    { label: 'Development Phases', value: '13' },
-    { label: 'API Endpoints', value: '40+' },
-    { label: 'Uptime', value: '99.9%' }
-  ],
-  techStack: ['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Firebase Auth', 'Tailwind CSS'],
-  url: '/projects/arbitragevault-bookfinder'
-};
-
-const methodologyHighlights = [
-  {
-    title: 'Zero-Tolerance Engineering',
-    description: 'Mandatory checkpoints, hostile code review, and verification gates before any completion claim.',
-    icon: 'shield'
-  },
-  {
-    title: 'MCP Server Integration',
-    description: 'GitHub, Render, Netlify, Neon, Context7 - automated DevOps through Model Context Protocol.',
-    icon: 'server'
-  },
-  {
-    title: 'Superpowers Workflow',
-    description: 'Systematic debugging, TDD, verification-before-completion - skills that enforce rigor.',
-    icon: 'zap'
-  }
-];
-
-const skills = [
-  { name: 'Python', category: 'Backend' },
-  { name: 'FastAPI', category: 'Backend' },
-  { name: 'TypeScript', category: 'Frontend' },
-  { name: 'React', category: 'Frontend' },
-  { name: 'PostgreSQL', category: 'Database' },
-  { name: 'SQLAlchemy', category: 'Database' },
-  { name: 'Tailwind CSS', category: 'Styling' },
-  { name: 'Firebase', category: 'Auth' },
-  { name: 'Playwright', category: 'Testing' },
-  { name: 'pytest', category: 'Testing' },
-  { name: 'Docker', category: 'DevOps' },
-  { name: 'Git', category: 'DevOps' }
-];
+const { hero, featuredProject, methodology, skills } = homepageData;
 ---
 
 <BaseLayout
@@ -67,21 +23,22 @@ const skills = [
     <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
       <div class="animate-fade-in">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] mb-8">
-          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-          Open to new opportunities
-        </div>
+        {hero.badgeActive && (
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--color-bg-secondary)] border border-[var(--color-border)] text-sm text-[var(--color-text-secondary)] mb-8">
+            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            {hero.badge}
+          </div>
+        )}
 
         <!-- Main Title -->
         <h1 class="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-[var(--color-text-primary)] leading-tight mb-6">
-          AI-Orchestrated<br />
-          <span class="text-gradient">Software Engineering</span>
+          {hero.titleLine1}<br />
+          <span class="text-gradient">{hero.titleLine2}</span>
         </h1>
 
         <!-- Subtitle -->
         <p class="text-lg sm:text-xl text-[var(--color-text-secondary)] max-w-2xl mx-auto mb-10 leading-relaxed">
-          Building production-grade applications with rigorous testing,
-          zero-tolerance engineering practices, and intelligent automation.
+          {hero.subtitle}
         </p>
 
         <!-- CTAs -->
@@ -90,7 +47,7 @@ const skills = [
             href="#featured-project"
             class="btn-primary inline-flex items-center justify-center gap-2 group"
           >
-            View Featured Project
+            {hero.ctaPrimary}
             <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -99,7 +56,7 @@ const skills = [
             href="/methodology"
             class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-all duration-300"
           >
-            Explore Methodology
+            {hero.ctaSecondary}
           </a>
         </div>
       </div>
@@ -191,16 +148,16 @@ const skills = [
           How I Work
         </span>
         <h2 class="font-display text-3xl sm:text-4xl font-bold text-[var(--color-text-primary)]">
-          Engineering Methodology
+          {methodology.sectionTitle}
         </h2>
         <p class="mt-3 text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-          A systematic approach combining AI orchestration with rigorous engineering practices.
+          {methodology.sectionSubtitle}
         </p>
       </div>
 
       <!-- Methodology Cards -->
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        {methodologyHighlights.map((item) => (
+        {methodology.highlights.map((item: { title: string; description: string; icon: string }) => (
           <div class="card-vault p-8 group">
             <div class="w-12 h-12 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center mb-6 group-hover:bg-[var(--color-accent)]/20 transition-colors duration-300">
               {item.icon === 'shield' && (
@@ -216,6 +173,21 @@ const skills = [
               {item.icon === 'zap' && (
                 <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              )}
+              {item.icon === 'code' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              )}
+              {item.icon === 'database' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                </svg>
+              )}
+              {item.icon === 'cloud' && (
+                <svg class="w-6 h-6 text-[var(--color-accent)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                 </svg>
               )}
             </div>
@@ -259,7 +231,7 @@ const skills = [
 
       <!-- Skills Grid -->
       <div class="flex flex-wrap justify-center gap-4">
-        {skills.map((skill) => (
+        {skills.map((skill: { name: string; category: string }) => (
           <div class="px-5 py-3 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] hover:border-[var(--color-accent)] transition-all duration-300 group cursor-default">
             <span class="text-[var(--color-text-primary)] group-hover:text-[var(--color-accent)] transition-colors duration-300">
               {skill.name}
