@@ -55,6 +55,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
+
+    <!-- Netlify Identity Widget for CMS -->
+    <script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body class="min-h-screen flex flex-col">
     <Header />
@@ -62,5 +65,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
+
+    <!-- Netlify Identity redirect after login -->
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>

@@ -1,0 +1,112 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Media files storage
+media_folder: "public/images"
+public_folder: "/images"
+
+# Collections
+collections:
+  # Blog Posts
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Author", name: "author", widget: "string", default: "Aziz Traore" }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        default: ["development"]
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Projects
+  - name: "projects"
+    label: "Projects"
+    folder: "src/content/projects"
+    create: true
+    nested:
+      depth: 2
+    meta: { path: { widget: "string", label: "Folder", index_file: "index" } }
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Tagline", name: "tagline", widget: "string" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Demo URL", name: "demoUrl", widget: "string", required: false }
+      - { label: "GitHub URL", name: "githubUrl", widget: "string", required: false }
+      - { label: "Featured", name: "featured", widget: "boolean", default: false }
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["active", "completed", "archived"]
+        default: "active"
+      - { label: "Start Date", name: "startDate", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # Project Metadata (JSON files)
+  - name: "project-meta"
+    label: "Project Metadata"
+    files:
+      - label: "ArbitrageVault BookFinder"
+        name: "arbitragevault"
+        file: "src/content/projects/arbitragevault-bookfinder/meta.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Demo URL", name: "demoUrl", widget: "string" }
+          - { label: "GitHub URL", name: "githubUrl", widget: "string" }
+          - { label: "Featured", name: "featured", widget: "boolean" }
+          - { label: "Status", name: "status", widget: "string" }
+          - { label: "Start Date", name: "startDate", widget: "string" }
+          - label: "Metrics"
+            name: "metrics"
+            widget: "object"
+            fields:
+              - { label: "Tests", name: "tests", widget: "string" }
+              - { label: "Phases", name: "phases", widget: "string" }
+              - { label: "Uptime", name: "uptime", widget: "string" }
+
+      - label: "MindScribe"
+        name: "mindscribe"
+        file: "src/content/projects/mindscribe/meta.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Demo URL", name: "demoUrl", widget: "string" }
+          - { label: "GitHub URL", name: "githubUrl", widget: "string" }
+          - { label: "Featured", name: "featured", widget: "boolean" }
+          - { label: "Status", name: "status", widget: "string" }
+
+      - label: "Prompt & Process Vault"
+        name: "prompt-process-vault"
+        file: "src/content/projects/prompt-process-vault/meta.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Slug", name: "slug", widget: "string" }
+          - { label: "Tagline", name: "tagline", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
+          - { label: "Demo URL", name: "demoUrl", widget: "string" }
+          - { label: "GitHub URL", name: "githubUrl", widget: "string" }
+          - { label: "Featured", name: "featured", widget: "boolean" }
+          - { label: "Status", name: "status", widget: "string" }
+
+  # About Page
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "About - Bio"
+        name: "about-bio"
+        file: "src/content/about/bio.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
